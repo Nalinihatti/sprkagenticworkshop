@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Superstore 2016 Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
+        .container { max-width: 1200px; margin: 30px auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px #0001; }
+        h1 { margin-top: 0; }
+        .subtitle { color: #555; margin-bottom: 24px; }
+        .kpis { display: flex; gap: 24px; margin-bottom: 24px; }
+        .kpi-card { background: #f0f4f8; padding: 18px 24px; border-radius: 8px; flex: 1; text-align: center; }
+        .kpi-label { color: #888; font-size: 15px; }
+        .kpi-value { font-size: 1.6em; font-weight: bold; margin-top: 6px; }
+        .charts { display: flex; gap: 24px; }
+        .chart-block { flex: 1; background: #fafbfc; padding: 18px; border-radius: 8px; }
+        .dropdown { margin-bottom: 8px; }
+        .insights { margin: 32px 0 18px 0; }
+        .insights ul { margin: 0; padding-left: 20px; }
+        .preview-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+        .preview-table th, .preview-table td { border: 1px solid #ddd; padding: 6px 8px; font-size: 13px; }
+        .preview-table th { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Global Superstore 2016 Dashboard</h1>
+    <div class="subtitle">Interactive dashboard for sales, profit, and orders (2016)</div>
+    <div class="kpis"><div class="kpi-card"><div class="kpi-label">Total Sales</div><div class="kpi-value">$12,649,677</div></div><div class="kpi-card"><div class="kpi-label">Total Profit</div><div class="kpi-value">$1,473,755</div></div><div class="kpi-card"><div class="kpi-label">Total Orders</div><div class="kpi-value">25,728</div></div><div class="kpi-card"><div class="kpi-label">Total Customers</div><div class="kpi-value">17,415</div></div><div class="kpi-card"><div class="kpi-label">Avg. Discount</div><div class="kpi-value">14.29%</div></div></div>
+    <div class="charts">
+        <div class="chart-block">
+            <div class="dropdown">
+                <label for="bar-filter">Category:</label>
+                <select id="bar-filter"></select>
+            </div>
+            <div id="bar-chart" style="height:400px;"></div>
+        </div>
+        <div class="chart-block">
+            <div class="dropdown">
+                <label for="pie-filter">Region:</label>
+                <select id="pie-filter"></select>
+            </div>
+            <div id="pie-chart" style="height:400px;"></div>
+        </div>
+    </div>
+    <div class="insights">
+        <h3>Key Insights</h3>
+        <ul><li>Total sales: $12,649,677</li><li>Total profit: $1,473,755</li><li>Most profitable region: Western Europe ($220,627)</li><li>Category with highest sales: Technology ($4,748,657)</li><li>Segment with most orders: Consumer (26,519 orders)</li></ul>
+    </div>
+    <h3>Preview of First 10 Orders</h3>
+    <table class="preview-table"><tr><th>Row ID</th><th>Order ID</th><th>Order Date</th><th>Ship Date</th><th>Ship Mode</th><th>Customer ID</th><th>Customer Name</th><th>Segment</th><th>Postal Code</th><th>City</th><th>State</th><th>Country</th><th>Region</th><th>Market</th><th>Product ID</th><th>Category</th><th>Sub-Category</th><th>Product Name</th><th>Sales</th><th>Quantity</th><th>Discount</th><th>Profit</th><th>Shipping Cost</th><th>Order Priority</th><th>Tax</th></tr>
+<tr><td>40098</td><td>CA-2014-AB10015140-41954</td><td>2014-11-11 00:00:00</td><td>2014-11-13 00:00:00</td><td>First Class</td><td>AB-100151402</td><td>Aaron Bergman</td><td>Consumer</td><td>73120.0</td><td>Oklahoma City</td><td>Oklahoma</td><td>United States</td><td>Central US</td><td>USCA</td><td>TEC-PH-5816</td><td>Technology</td><td>Phones</td><td>Samsung Convoy 3</td><td>321.98</td><td>2</td><td>0.0</td><td>162.1544</td><td>40.77</td><td>High</td><td>16.099</td></tr>
+<tr><td>26341</td><td>IN-2014-JR162107-41675</td><td>2014-02-05 00:00:00</td><td>2014-02-07 00:00:00</td><td>Second Class</td><td>JR-162107</td><td>Justin Ritter</td><td>Corporate</td><td>nan</td><td>Wollongong</td><td>New South Wales</td><td>Australia</td><td>Oceania</td><td>Asia Pacific</td><td>FUR-CH-5379</td><td>Furniture</td><td>Chairs</td><td>Novimex Executive Leather Armchair, Black</td><td>3709.3949999999995</td><td>9</td><td>0.1</td><td>-288.765</td><td>923.63</td><td>Critical</td><td>185.46974999999998</td></tr>
+<tr><td>25330</td><td>IN-2014-CR127307-41929</td><td>2014-10-17 00:00:00</td><td>2014-10-18 00:00:00</td><td>First Class</td><td>CR-127307</td><td>Craig Reiter</td><td>Consumer</td><td>nan</td><td>Brisbane</td><td>Queensland</td><td>Australia</td><td>Oceania</td><td>Asia Pacific</td><td>TEC-PH-5356</td><td>Technology</td><td>Phones</td><td>Nokia Smart Phone, with Caller ID</td><td>7175.171</td><td>9</td><td>0.1</td><td>3919.971</td><td>915.49</td><td>Medium</td><td>358.75855</td></tr>
+<tr><td>13524</td><td>ES-2014-KM1637548-41667</td><td>2014-01-28 00:00:00</td><td>2014-01-30 00:00:00</td><td>First Class</td><td>KM-1637548</td><td>Katherine Murray</td><td>Home Office</td><td>nan</td><td>Berlin</td><td>Berlin</td><td>Germany</td><td>Western Europe</td><td>Europe</td><td>TEC-PH-5267</td><td>Technology</td><td>Phones</td><td>Motorola Smart Phone, Cordless</td><td>2892.5099999999998</td><td>5</td><td>0.1</td><td>2096.54</td><td>910.16</td><td>Medium</td><td>144.6255</td></tr>
+<tr><td>47221</td><td>SG-2014-RH9495111-41948</td><td>2014-11-05 00:00:00</td><td>2014-11-06 00:00:00</td><td>Same Day</td><td>RH-9495111</td><td>Rick Hansen</td><td>Consumer</td><td>nan</td><td>Dakar</td><td>Dakar</td><td>Senegal</td><td>Western Africa</td><td>Africa</td><td>TEC-CO-6011</td><td>Technology</td><td>Copiers</td><td>Sharp Wireless Fax, High-Speed</td><td>3832.96</td><td>8</td><td>0.0</td><td>311.52</td><td>903.04</td><td>Critical</td><td>191.648</td></tr>
+<tr><td>22732</td><td>IN-2014-JM156557-41818</td><td>2014-06-28 00:00:00</td><td>2014-07-01 00:00:00</td><td>Second Class</td><td>JM-156557</td><td>Jim Mitchum</td><td>Corporate</td><td>nan</td><td>Sydney</td><td>New South Wales</td><td>Australia</td><td>Oceania</td><td>Asia Pacific</td><td>TEC-PH-5842</td><td>Technology</td><td>Phones</td><td>Samsung Smart Phone, with Caller ID</td><td>2862.675</td><td>5</td><td>0.1</td><td>763.2750000000001</td><td>897.35</td><td>Critical</td><td>143.13375</td></tr>
+<tr><td>30570</td><td>IN-2012-TS2134092-41219</td><td>2012-11-06 00:00:00</td><td>2012-11-08 00:00:00</td><td>First Class</td><td>TS-2134092</td><td>Toby Swindell</td><td>Consumer</td><td>nan</td><td>Porirua</td><td>Wellington</td><td>New Zealand</td><td>Oceania</td><td>Asia Pacific</td><td>FUR-CH-5378</td><td>Furniture</td><td>Chairs</td><td>Novimex Executive Leather Armchair, Adjustable</td><td>1822.0799999999997</td><td>4</td><td>0.0</td><td>564.84</td><td>894.77</td><td>Critical</td><td>91.10399999999998</td></tr>
+<tr><td>31192</td><td>IN-2013-MB1808592-41378</td><td>2013-04-14 00:00:00</td><td>2013-04-18 00:00:00</td><td>Standard Class</td><td>MB-1808592</td><td>Mick Brown</td><td>Consumer</td><td>nan</td><td>Hamilton</td><td>Waikato</td><td>New Zealand</td><td>Oceania</td><td>Asia Pacific</td><td>FUR-TA-3764</td><td>Furniture</td><td>Tables</td><td>Chromcraft Conference Table, Fully Assembled</td><td>5244.84</td><td>6</td><td>0.0</td><td>996.4799999999999</td><td>878.38</td><td>High</td><td>262.242</td></tr>
+<tr><td>40099</td><td>CA-2014-AB10015140-41954</td><td>2014-11-11 00:00:00</td><td>2014-11-13 00:00:00</td><td>First Class</td><td>AB-100151402</td><td>Aaron Bergman</td><td>Consumer</td><td>73120.0</td><td>Oklahoma City</td><td>Oklahoma</td><td>United States</td><td>Central US</td><td>USCA</td><td>FUR-BO-5957</td><td>Furniture</td><td>Bookcases</td><td>Sauder Facets Collection Library, Sky Alder Finish</td><td>341.96</td><td>2</td><td>0.0</td><td>54.713599999999985</td><td>25.27</td><td>High</td><td>17.098</td></tr>
+<tr><td>36258</td><td>CA-2012-AB10015140-40974</td><td>2012-03-06 00:00:00</td><td>2012-03-07 00:00:00</td><td>First Class</td><td>AB-100151404</td><td>Aaron Bergman</td><td>Consumer</td><td>98103.0</td><td>Seattle</td><td>Washington</td><td>United States</td><td>Western US</td><td>USCA</td><td>FUR-CH-4421</td><td>Furniture</td><td>Chairs</td><td>Global Push Button Manager's Chair, Indigo</td><td>48.712</td><td>1</td><td>0.2</td><td>5.480099999999997</td><td>11.13</td><td>High</td><td>2.4356</td></tr></table>
+</div>
+<script>
+const DATA = {"bar_data": {"All": {"x": ["Apple Smart Phone, Full Size", "Cisco Smart Phone, Full Size", "Motorola Smart Phone, Full Size", "Nokia Smart Phone, Full Size", "Canon imageCLASS 2200 Advanced Copier", "Hon Executive Leather Armchair, Adjustable", "Office Star Executive Leather Armchair, Adjustable", "Harbour Creations Executive Leather Armchair, Adjustable", "Nokia Smart Phone, with Caller ID", "Samsung Smart Phone, Cordless", "Samsung Smart Phone, VoIP", "Cisco Smart Phone, with Caller ID", "SAFCO Executive Leather Armchair, Black", "Cisco Smart Phone, Cordless", "Novimex Executive Leather Armchair, Adjustable"], "y": [86935.7786, 76441.5306, 73156.303, 71904.5555, 61599.82399999999, 58193.484099999994, 50661.683999999994, 50121.515999999996, 49877.7857, 48653.460000000014, 45406.328, 43127.5008, 41923.52999999999, 41021.524000000005, 40585.133599999994]}, "Technology": {"x": ["Apple Smart Phone, Full Size", "Cisco Smart Phone, Full Size", "Motorola Smart Phone, Full Size", "Nokia Smart Phone, Full Size", "Canon imageCLASS 2200 Advanced Copier", "Nokia Smart Phone, with Caller ID", "Samsung Smart Phone, Cordless", "Samsung Smart Phone, VoIP", "Cisco Smart Phone, with Caller ID", "Cisco Smart Phone, Cordless", "Motorola Smart Phone, Cordless", "Motorola Smart Phone, with Caller ID", "Hewlett Copy Machine, Color", "Apple Smart Phone, Cordless", "Canon Wireless Fax, Color"], "y": [86935.7786, 76441.5306, 73156.303, 71904.5555, 61599.82399999999, 49877.7857, 48653.460000000014, 45406.328, 43127.5008, 41021.524000000005, 38931.042, 30243.549, 29709.193199999998, 27163.646999999997, 26585.7144]}, "Furniture": {"x": ["Hon Executive Leather Armchair, Adjustable", "Office Star Executive Leather Armchair, Adjustable", "Harbour Creations Executive Leather Armchair, Adjustable", "SAFCO Executive Leather Armchair, Black", "Novimex Executive Leather Armchair, Adjustable", "Sauder Classic Bookcase, Traditional", "Novimex Executive Leather Armchair, Red", "Harbour Creations Executive Leather Armchair, Black", "Office Star Executive Leather Armchair, Black", "Hon Executive Leather Armchair, Black", "Novimex Executive Leather Armchair, Black", "Bush Library with Doors, Metal", "Safco Classic Bookcase, Mobile", "Safco Library with Doors, Pine", "Bush Classic Bookcase, Traditional"], "y": [58193.484099999994, 50661.683999999994, 50121.515999999996, 41923.52999999999, 40585.133599999994, 39108.303, 38814.801999999996, 32230.739199999993, 29421.6023, 29244.769599999992, 28629.507499999996, 28516.714200000002, 27696.1095, 27263.7618, 26535.324]}, "Office Supplies": {"x": ["Eldon File Cart, Single Width", "Hoover Stove, White", "Hoover Stove, Red", "Rogers File Cart, Single Width", "Smead Lockers, Industrial", "Hamilton Beach Stove, Silver", "Rogers Lockers, Blue", "Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind", "Smead File Cart, Single Width", "Smead Lockers, Blue", "Fellowes Lockers, Industrial", "Tenex File Cart, Single Width", "Fellowes Lockers, Single Width", "KitchenAid Stove, Silver", "KitchenAid Refrigerator, Black"], "y": [34387.7287, 32842.6043, 31663.779000000002, 29466.3053, 28991.663999999997, 28657.049000000003, 28214.589200000002, 27453.384, 25397.1708, 24776.044, 22637.436, 22113.8622, 22090.751999999997, 21966.329, 21870.0339]}}, "pie_data": {"All": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [6514110.79786, 3825697.52146, 2309868.41056]}, "Central US": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [252131.434, 157995.81279999999, 91212.644]}, "Oceania": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [581550.47, 322826.913, 197807.229]}, "Western Europe": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [915067.3635, 521205.8805, 295656.4245]}, "Western Africa": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [98991.61, 47611.116, 28276.086000000003]}, "Western US": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [362880.773, 225855.2745, 136721.777]}, "Southern Asia": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [431073.354, 269287.818, 166211.505]}, "Western Asia": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [164640.24, 93978.936, 58487.784]}, "South America": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [333630.92724, 166493.63439999998, 117112.55624]}, "Eastern Asia": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [407538.561, 271682.10599999997, 175838.724]}, "Southern Europe": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [302127.627, 216199.524, 90266.817]}, "Eastern Africa": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [67489.569, 33618.219, 26748.231]}, "Eastern Europe": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [152420.43, 94426.23, 63186.78]}, "Northern Europe": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [327133.611, 202075.362, 107570.184]}, "Central America": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [637928.27844, 374220.98916, 211012.74056]}, "Eastern US": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [350908.167, 200409.347, 127463.72600000001]}, "Caribbean": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [163349.20628, 104537.8578, 57393.79696]}, "Central Africa": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [94098.72, 24891.99, 24639.3]}, "Southeastern Asia": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [460752.8154, 254351.7078, 169318.6458]}, "Southern US": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [195580.971, 121885.9325, 74255.0015]}, "North Africa": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [119253.96, 62051.04, 51911.61]}, "Southern Africa": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [44932.95, 36766.590000000004, 23492.219999999998]}, "Canada": {"labels": ["Consumer", "Corporate", "Home Office"], "values": [37719.11, 20313.73, 11895.33]}, "Central Asia": {"labels": ["Consumer", "Home Office", "Corporate"], "values": [12910.65, 3389.2980000000002, 3011.511]}}, "bar_filter_options": ["All", "Technology", "Furniture", "Office Supplies"], "pie_filter_options": ["All", "Central US", "Oceania", "Western Europe", "Western Africa", "Western US", "Southern Asia", "Western Asia", "South America", "Eastern Asia", "Southern Europe", "Eastern Africa", "Eastern Europe", "Northern Europe", "Central America", "Eastern US", "Caribbean", "Central Africa", "Southeastern Asia", "Southern US", "North Africa", "Southern Africa", "Canada", "Central Asia"]};
+
+function fillDropdown(id, options) {
+    const sel = document.getElementById(id);
+    sel.innerHTML = '';
+    options.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt;
+        o.textContent = opt;
+        sel.appendChild(o);
+    });
+}
+
+function drawBar(filter) {
+    const d = DATA.bar_data[filter] || DATA.bar_data['All'];
+    Plotly.react('bar-chart', [{
+        x: d.x,
+        y: d.y,
+        type: 'bar',
+        marker: {color: '#1f77b4'},
+    }], {
+        title: 'Top 15 Products by Sales',
+        xaxis: {title: 'Product Name', automargin: true},
+        yaxis: {title: 'Sales'},
+        margin: {b: 120}
+    });
+}
+
+function drawPie(filter) {
+    const d = DATA.pie_data[filter] || DATA.pie_data['All'];
+    Plotly.react('pie-chart', [{
+        labels: d.labels,
+        values: d.values,
+        type: 'pie',
+        textinfo: 'label+percent',
+        automargin: true
+    }], {
+        title: 'Sales by Segment',
+        showlegend: true
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    fillDropdown('bar-filter', DATA.bar_filter_options);
+    fillDropdown('pie-filter', DATA.pie_filter_options);
+    drawBar('All');
+    drawPie('All');
+    document.getElementById('bar-filter').addEventListener('change', function() {
+        drawBar(this.value);
+    });
+    document.getElementById('pie-filter').addEventListener('change', function() {
+        drawPie(this.value);
+    });
+});
+</script>
+</body>
+</html>
